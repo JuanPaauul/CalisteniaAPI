@@ -1,0 +1,3 @@
+CalisteniaAPI/bin
+
+CalisteniaAPI/obj
