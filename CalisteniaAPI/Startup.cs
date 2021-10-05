@@ -1,3 +1,4 @@
+using CalisteniaAPI.Data.Repository;
 using CalisteniaAPI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,7 +27,12 @@ namespace CalisteniaAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<ICompetitionsService, CompetitionService>();
+            services.AddTransient<ICompetitionsService, CompetitionService>();
+            services.AddTransient<IParticipantsService, ParticipantService>();
+            services.AddSingleton<ICompetitionRepository, CompetitionRepository>();
+
+            //AutoMapper config
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

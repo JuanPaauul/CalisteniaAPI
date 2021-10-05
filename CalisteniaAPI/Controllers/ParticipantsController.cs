@@ -10,21 +10,21 @@ using System.Threading.Tasks;
 
 namespace CalisteniaAPI.Controllers
 {
-    [Route("/api/competitions")]
-    public class CompetitionsController:Controller
+    [Route("api/competitions/{competitionId}/[controller]")]
+    public class ParticipantsController:Controller
     {
-        private ICompetitionsService _competitionService;
-        public CompetitionsController(ICompetitionsService competitionService)
+        private IParticipantsService _participantService;
+        public ParticipantsController(IParticipantsService participantService)
         {
-            _competitionService = competitionService;
+            _participantService = participantService;
         }
         [HttpGet]
-        public ActionResult<IEnumerable<CompetitionModel>> GetCompetitions([FromQuery]string direction = "ascending", string orderBy = "id")
+        public ActionResult<IEnumerable<CompetitionModel>> GetParticipants(int competitionId,[FromQuery] string direction = "ascending", string orderBy = "CI")
         {
             try
             {
-                var competitions = _competitionService.GetCompetitions(direction,orderBy);
-                return Ok(competitions);
+                var participants = _participantService.GetParticipants(competitionId,direction, orderBy);
+                return Ok(participants);
             }
             catch (NotFoundElementException ex)
             {
@@ -39,13 +39,13 @@ namespace CalisteniaAPI.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Uups, something happened.");
             }
         }
-        [HttpGet("{id:int}")]
-        public ActionResult<CompetitionModel> GetCompetition(int id)
+        [HttpGet("{CI:int}")]
+        public ActionResult<CompetitionModel> GetParticipant(int competitionId, int CI)
         {
             try
             {
-                var competitions = _competitionService.GetCompetition(id);
-                return Ok(competitions);
+                var participants = _participantService.GetParticipant(competitionId, CI);
+                return Ok(participants);
             }
             catch (NotFoundElementException ex)
             {
@@ -60,31 +60,20 @@ namespace CalisteniaAPI.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Uups, something happened.");
             }
         }
-        public ActionResult<CompetitionModel> PostCompetition([FromBody]CompetitionModel competition)
+        public ActionResult<CompetitionModel> PostParticipant([FromBody] ParticipantModel participant)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var competitions = _competitionService.CreateCompetition(competition);
-            return Created($"/api/competitions/{competitions.Id}", competitions);
+            var participants = _participantService.CreateParticipant(participant);
+            return Created($"/api/competitions/0/participants/{participant.CI}", participants);
         }
-        [HttpPut("{id:int}")]
-        public ActionResult<CompetitionModel> PutCompetition(int id, [FromBody]CompetitionModel competition)
+        [HttpPut("{CI:int}")]
+        public ActionResult<CompetitionModel> PutParticipant(int competitionId, int CI, [FromBody] ParticipantModel participant)
         {
             try
             {
-                /*if (!ModelState.IsValid)
-                {
-                    if (competition.CompetitionDate != null && ModelState.ContainsKey("competitiondate") && ModelState["competitiondate"].Errors.Count > 0)
-                    {
-                        return BadRequest(ModelState["competitiondate"].Errors);
-                    }
-                    if (competition.Reward != null && ModelState.ContainsKey("reward") && ModelState["reward"].Errors.Count > 0)
-                    {
-                        return BadRequest(ModelState["reward"].Errors);
-                    }
-                }*/
-                var updatedCompetition = _competitionService.UpdateCompetition(id, competition);
-                return Ok(updatedCompetition);
+                var updatedParticipant = _participantService.UpdateParticipant(competitionId, CI, participant);
+                return Ok(updatedParticipant);
             }
             catch (NotFoundElementException ex)
             {
@@ -95,12 +84,12 @@ namespace CalisteniaAPI.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Uups, something happened.");
             }
         }
-        [HttpDelete("{id:int}")]
-        public ActionResult DeleteCompetition(int id)
+        [HttpDelete("{CI:int}")]
+        public ActionResult DeleteCompetition(int competitionId, int CI)
         {
             try
             {
-                _competitionService.DeleteCompetition(id);
+                _participantService.DeleteParticipant(competitionId, CI);
                 return Ok();
             }
             catch (NotFoundElementException ex)

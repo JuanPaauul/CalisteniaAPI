@@ -8,10 +8,10 @@ namespace CalisteniaAPI.Services
 {
     public interface ICompetitionsService
     {
-        IEnumerable<CompetitionModel> GetCompetitions();
+        IEnumerable<CompetitionModel> GetCompetitions(string direction, string orderBy);
         CompetitionModel GetCompetition(int competitionId);
         CompetitionModel CreateCompetition(CompetitionModel competition);
         CompetitionModel UpdateCompetition(int competitionId, CompetitionModel competition);
-        bool DeleteCompetition(int competitionId);
+        void DeleteCompetition(int competitionId);
     }
 }

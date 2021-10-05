@@ -6,115 +6,305 @@
 	},
 	"item": [
 		{
-			"name": "GetCompetitions",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}/api/competitions",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"competitions"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GetCompetition",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}/api/competitions/1",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"competitions",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "PostCompetition",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"competitionDate\": \"2013-08-12T00:00:00\",\r\n    \"reward\": 600\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Competitions",
+			"item": [
+				{
+					"name": "GetCompetitions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/competitions",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"competitions"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{host}}/api/competitions",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"competitions"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "PutCompetition",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"reward\": 300\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "GetCompetition",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/competitions/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"competitions",
+								"1"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{host}}/api/competitions/1",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"competitions",
-						"1"
-					]
+				{
+					"name": "PostCompetition",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CompetitionDate\": \"2015-08-12T00:00:00\",\r\n    \"reward\": 600\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/competitions",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"competitions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCompetition",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/competitions/2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"competitions",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCompetitionsQueryParam",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/competitions?direction=descending&orderby=competitiondate",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"competitions"
+							],
+							"query": [
+								{
+									"key": "direction",
+									"value": "descending"
+								},
+								{
+									"key": "orderby",
+									"value": "competitiondate"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutCompetition",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reward\":255\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/competitions/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"competitions",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "DeleteCompetition",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{host}}/api/competitions/1",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"competitions",
-						"1"
-					]
+			"name": "Participants",
+			"item": [
+				{
+					"name": "GetParticipants",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/competitions/1/participants",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"competitions",
+								"1",
+								"participants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetParticipant",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/competitions/1/participants/3458267",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"competitions",
+								"1",
+								"participants",
+								"3458267"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostParticipant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"names\": \"Juan\",\r\n    \"birthYear\": 2000,\r\n    \"ci\": 9448076,\r\n    \"lastNames\": \"Carrasco\",\r\n    \"cellphoneNumber\": 75989769,\r\n    \"competitionsWon\": 0,\r\n    \"competitionPlaced\": {\r\n        \"1\": \"5th\",\r\n        \"2\": \"5th\",\r\n        \"3\": \"5th\",\r\n        \"4\": \"5th\",\r\n        \"5\": \"5th\",\r\n        \"6\": \"5th\",\r\n        \"7\": \"5th\",\r\n        \"8\": \"5th\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/competitions/1/participants",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"competitions",
+								"1",
+								"participants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteParticipants",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/competitions/1/participants/9448076",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"competitions",
+								"1",
+								"participants",
+								"9448076"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetParticipantsQueryParam",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/competitions/1/participants/?direction=ascending&orderby=ci",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"competitions",
+								"1",
+								"participants",
+								""
+							],
+							"query": [
+								{
+									"key": "direction",
+									"value": "ascending"
+								},
+								{
+									"key": "orderby",
+									"value": "ci"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutParticipants",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"birthYear\":2121\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/competitions/1/participants/3458267",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"competitions",
+								"1",
+								"participants",
+								"3458267"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }
